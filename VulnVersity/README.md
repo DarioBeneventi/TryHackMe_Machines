@@ -48,7 +48,7 @@ This box contains a webserver that is vulnerable due to having a upload form pag
 
 ![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/VulnVersity/images/image8.png?raw=true)
 
-*Now that we are inside we poke around and find our user which is called bill and his directory contains the user flag. 
+* Now that we are inside we poke around and find our user which is called bill and his directory contains the user flag. 
 
 ![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/VulnVersity/images/image9.png?raw=true)
 
