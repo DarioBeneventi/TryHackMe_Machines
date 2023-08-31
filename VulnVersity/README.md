@@ -58,7 +58,9 @@ This box contains a webserver that is vulnerable due to having a upload form pag
 * One file stands out which is called /bin/systemctl and looking at this [link](https://medium.com/@klockw3rk/privilege-escalation-leveraging-misconfigured-systemctl-permissions-bc62b0b28d49) we know why it is so important to have the rights to this file configured to superusers only.
 
 ![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/VulnVersity/images/image10.png?raw=true)
+
 ![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/VulnVersity/images/image11.png?raw=true)
+
 ![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/VulnVersity/images/image12.png?raw=true)
 
 * SUID (set owner userId upon execution) is a special type of file permission given to a file. SUID gives temporary permissions to a user to run the program/file with the permission of the file owner (rather than the user who runs it).
@@ -66,13 +68,17 @@ This box contains a webserver that is vulnerable due to having a upload form pag
 * We first need to look for a writeable directory, we can use the var/tmp directory for this as an example.
 
 ![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/VulnVersity/images/image13.png?raw=true)
+
 ![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/VulnVersity/images/image14.png?raw=true)
+
 ![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/VulnVersity/images/image15.png?raw=true)
 
 * Now that our service is on the system we are going to use systemctl to start our backdoor service. Before starting the service we need to also run our netcat listener to capture the root shell.
 
 ![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/VulnVersity/images/image16.png?raw=true)
+
 ![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/VulnVersity/images/image17.png?raw=true)
+
 ![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/VulnVersity/images/image18.png?raw=true)
 
 ### Extra Notes
