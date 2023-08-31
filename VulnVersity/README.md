@@ -14,4 +14,4 @@ This box contains a webserver that is vulnerable due to having a upload form pag
 
 ### Enumeration phase
 * With our initial scan we can see that 6 ports are open and that on port 3333 a web server is running, we also know that our operating system is Ubuntu. 
-![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/VulnVersity/images/image1.png?raw=true)
+  ![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/VulnVersity/images/image1.png?raw=true)
