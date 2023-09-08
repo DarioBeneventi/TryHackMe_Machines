@@ -38,16 +38,39 @@ This room covers accessing a Samba share, manipulating a vulnerable version of P
 
 2. Information about the ProFTPD server. 
 
-* We also had another interesting port in our initial nmap scan, the 111 port with service rpcbind that in this case is being used to access a network file system. Enumerate this to find a mount! 
+* We also had another interesting port in our initial nmap scan, the port 111 with service rpcbind that in this case is being used to access a network file system. Enumerate this to find a mount! 
 
 ![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/Kenobi/images/image6.png?raw=true)
 
  ### Exploitation
+
+* We have noticed that the port 21 uses ProFTPD 1.3.5 and after researching this we find out that this version is vulnerable to the mod_copy module exploit. 
+
+![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/Kenobi/images/image7.png?raw=true)
+
+* The mod_copy module implements SITE CPFR and SITE CPO commands, these can be used to copy files/directories. Any unauthenticated client can leverage these commands to copy files from any part of the filesystem to a chosen destination. 
+* We know that the FTP service is running as the Kenobi user (from the file on the share) and an ssh key is generated for that user. So we're now going to copy Kenobi's private key using SITE CPFR and SITE CPTO commands because it is allowed! 
  
+ ![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/Kenobi/images/image8.png?raw=true)
 
+* As we have placed the ssh key from kenobi in the /var directory we will now mount this directory to our machine so we can have access to the private key of kenobi. 
+ 
+ ![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/Kenobi/images/image9.png?raw=true)
+ 
+* Bingo we now got access to the /var/tmp directory where we copied the id_rsa(private key) to, all we need to do now is copy the file to our machine, adjust the rights on the file and utilize it to login in the kenobi account.
 
+ ![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/Kenobi/images/image10.png?raw=true)
+ ![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/Kenobi/images/image11.png?raw=true)
+ 
  ### Privilege Escalation
 
+* We will be using a method called Path Variable Manipulation to escalate our privileges.
+
+ ![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/Kenobi/images/image12.png?raw=true)
+
+* SUID bits can be dangerous, some binaries such as passwd need to be run with elevated privileges (as its resetting your password on the system), however other custom files could that have the SUID bit can lead to all sorts of issues.
+* After refreshing what SUID/SGID/Sticky Bits are we will now be looking for these type of files and we find one that stands out called /usr/bin/menu.
+* When we run this binary file it gives us 3 options.
 
 
 ### Extra Notes
