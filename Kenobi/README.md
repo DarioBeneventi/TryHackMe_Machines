@@ -20,16 +20,16 @@ This room covers accessing a Samba share, manipulating a vulnerable version of P
 
 * With our initial scan We can see that 7 ports are open on this machine, in particular 139 & 445 mean that this is a Samba server and also the port 21 in which we can ftp. 
 
-![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/VulnVersity/images/image1.png?raw=true)
-![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/VulnVersity/images/image2.png?raw=true)
+![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/Kenobi/images/image1.png?raw=true)
+![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/Kenobi/images/image2.png?raw=true)
 
 * We will be using gobuster to fuzz for directories & search for something interesting.
 
-![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/VulnVersity/images/image3.png?raw=true)
+![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/Kenobi/images/image3.png?raw=true)
 
 * Bingo we found a directory called internal, when we navigate to this page we can see a upload form page.
 
-![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/VulnVersity/images/image4.png?raw=true)
+![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/Kenobi/images/image4.png?raw=true)
 
  ### Exploitation
  
