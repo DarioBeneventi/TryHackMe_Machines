@@ -1,22 +1,24 @@
-# VulnVersity - TryHackMe
+# Kenobi - TryHackMe
 
 ![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/VulnVersity/images/vulnversity_header.png?raw=true)
 
-This box contains a webserver that is vulnerable due to having a upload form page in one of its directories, we find the directoy in question by using GoBuster. We also fuzz out what extensions are allowed with the Burpsuite snipe attack to be able to know what format our backdoor has to be. To escalate our privileges we look for a misconfiguration in the SUID files, systemctl in particular is vulnerable and therefore we create a system d unit file that creates a backdoor to our attack machine but this time with the privileges of the root user.
-
+This room covers accessing a Samba share, manipulating a vulnerable version of ProFTPD (1.3.5) to gain initital access and escalate privileges to root via an SUID binary. 
 
  ### Tools Used
  * Nmap
- * Gobuster
- * Burpsuite
+ * Ncat
+ * Smbclient
+ * Smbget
 
  ### Vulnerabilities
- * Vulnerable web server - upload form page
- * Misconfigured SUID
+ * Accessable SMB Shares 
+ * ProFTPD 1.3.5 - mod_copy module
+ * NFS mount /var
+ * Path Variable Manipulation - SUID/SGID/Sticky Bits  
 
 ### Enumeration phase
 
-* With our initial scan we can see that 6 ports are open and that on port 3333 a web server is running, we also know that our operating system is Ubuntu. 
+* With our initial scan We can see that 7 ports are open on this machine, in particular 139 & 445 mean that this is a Samba server and also the port 21 in which we can ftp. 
 
 ![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/VulnVersity/images/image1.png?raw=true)
 ![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/VulnVersity/images/image2.png?raw=true)
