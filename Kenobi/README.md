@@ -87,5 +87,6 @@ This room covers accessing a Samba share, manipulating a vulnerable version of P
  ![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/Kenobi/images/image17.png?raw=true)
 
 ### Extra Notes
-Used the following links to complete this lab 
+Used the following link to complete this lab 
+
 https://materials.rangeforce.com/tutorial/2019/11/07/Linux-PrivEsc-SUID-Bit/ 
