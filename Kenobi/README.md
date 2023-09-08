@@ -1,6 +1,6 @@
 # Kenobi - TryHackMe
 
-![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/VulnVersity/images/vulnversity_header.png?raw=true)
+![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/kenobi/images/kenobi_header.png?raw=true)
 
 This room covers accessing a Samba share, manipulating a vulnerable version of ProFTPD (1.3.5) to gain initital access and escalate privileges to root via an SUID binary. 
 
