@@ -68,12 +68,24 @@ This room covers accessing a Samba share, manipulating a vulnerable version of P
 
  ![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/Kenobi/images/image12.png?raw=true)
 
-* SUID bits can be dangerous, some binaries such as passwd need to be run with elevated privileges (as its resetting your password on the system), however other custom files could that have the SUID bit can lead to all sorts of issues.
+* SUID bits can be dangerous, some binaries such as passwd need to be run with elevated privileges (as its resetting your password on the system), however other custom files that have the SUID bit can lead to all sorts of issues.
 * After refreshing what SUID/SGID/Sticky Bits are we will now be looking for these type of files and we find one that stands out called /usr/bin/menu.
 * When we run this binary file it gives us 3 options.
 
+ ![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/Kenobi/images/image13.png?raw=true)
+ ![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/Kenobi/images/image14.png?raw=true)
+
+* Strings is a Linux command that looks for human readable text in a binary, this shows us the binary is running without a full path (e.g. not using /usr/bin/curl or /usr/bin/uname).
+* As this file runs as the root users privileges, we can manipulate our path gain a root shell.
+* We copy the /bin/sh shell, call it curl, give it the correct permissions and then put its location in our path. This means that when the /usr/bin/menu binary runs, its using our path variable to find the "curl" binary.. Which is actually a version of /usr/sh, as well as this file being run as root it runs our shell as root!
+
+ ![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/Kenobi/images/image15.png?raw=true)
+![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/Kenobi/images/image16.png?raw=true)
+
+* Now that we have a root shell we can poke around and find the root flag.
+
+ ![alt text](https://github.com/DarioBeneventi/TryHackMe_Machines/blob/main/Kenobi/images/image17.png?raw=true)
 
 ### Extra Notes
 Used the following links to complete this lab 
-http://pentestmonkey.net/tools/php-reverse-shell 
-https://medium.com/@klockw3rk/privilege-escalation-leveraging-misconfigured-systemctl-permissions-bc62b0b28d49 
+https://materials.rangeforce.com/tutorial/2019/11/07/Linux-PrivEsc-SUID-Bit/ 
